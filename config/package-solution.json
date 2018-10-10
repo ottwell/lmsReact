@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "lms-react-client-side-solution",
+    "id": "7c7cd184-ee0b-4b9b-8ace-378cf583f8ce",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "features": [{
+      "title": "asset-deployment-webpart-client-side-solution",
+      "description": "asset-deployment-webpart-client-side-solution",
+      "id": "a5d24197-7c7e-4ef6-882c-b25509074c41", 
+      "version": "1.0.0.0",
+      "assets": {
+        "elementManifests": [
+          "elements.xml"
+        ]
+      }
+    }]
+  },
+  "paths": {
+    "zippedPackage": "solution/lms-react.sppkg"
+  }
+}

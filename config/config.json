@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "cursum-webpart-react-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cursumWebpartReact/CursumWebpartReactWebPart.js",
+          "manifest": "./src/webparts/cursumWebpartReact/CursumWebpartReactWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CursumWebpartReactWebPartStrings": "lib/webparts/cursumWebpartReact/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

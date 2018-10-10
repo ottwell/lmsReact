@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.6.0",
+    "libraryName": "lms-react",
+    "libraryId": "7c7cd184-ee0b-4b9b-8ace-378cf583f8ce",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}
