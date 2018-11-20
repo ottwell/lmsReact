@@ -8,5 +8,4 @@ export interface ICursumWebpartReactProps {
   authRedirectEndPoint: string;
   resultCount: string;
   dataProvider: LmsApiService;
-  configureStartCallback: () => void;
 }

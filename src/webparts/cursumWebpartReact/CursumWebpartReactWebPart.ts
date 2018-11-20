@@ -26,7 +26,6 @@ export default class CursumWebpartReactWebPart extends BaseClientSideWebPart<ICu
 
   protected onInit(): Promise<void> {
     this._dataProvider = new LmsApiService();
-    this._openPropertyPane = this._openPropertyPane.bind(this);
     SPComponentLoader.loadCss(this.properties.cssExternalUrl);
     return super.onInit();
   }
@@ -42,7 +41,6 @@ export default class CursumWebpartReactWebPart extends BaseClientSideWebPart<ICu
         azureAppId: this.properties.azureAppId,
         resultCount: this.properties.resultCount,
         dataProvider: this._dataProvider,
-        configureStartCallback: this._openPropertyPane,
         authRedirectEndPoint: this.properties.authRedirectEndPoint
       }
     );
@@ -58,16 +56,12 @@ export default class CursumWebpartReactWebPart extends BaseClientSideWebPart<ICu
     return Version.parse('1.0');
   }
 
-  private _openPropertyPane(): void {
-    this.context.propertyPane.open();
-  }
-
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
           header: {
-            description: 'strings.PropertyPaneDescription'
+            description: strings.PropertyPaneDescription
           },
           groups: [
             {

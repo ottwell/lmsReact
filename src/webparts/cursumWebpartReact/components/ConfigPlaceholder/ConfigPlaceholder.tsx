@@ -8,8 +8,6 @@ import { IConfigurePlaceholderState } from './IConfigPlaceholderState';
 export class ConfigurePlaceholder extends React.Component<IConfigurePlaceholderProps, IConfigurePlaceholderState> {
     constructor (props: IConfigurePlaceholderProps) {
         super(props);
-        this._configureWebPart = this._configureWebPart.bind(this);
-        
       }
 
 
@@ -19,11 +17,7 @@ export class ConfigurePlaceholder extends React.Component<IConfigurePlaceholderP
                 iconName='Edit'
                 iconText={strings.configureTitle}
                 description={strings.configureDesc}
-                buttonLabel={strings.configureButton}
-                onConfigure={ this._configureWebPart } />
+            />
         );
-    }
-    private _configureWebPart(): void {
-        this.props.configureStartCallback();
     }
 }

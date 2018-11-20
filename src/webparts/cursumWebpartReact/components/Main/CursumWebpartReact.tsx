@@ -43,7 +43,7 @@ export class CursumWebpartReact extends React.Component<ICursumWebpartReactProps
         <Spinner size={SpinnerSize.medium} hidden={!this.state.loadingData} />
         {
           (!this.props.apiUrl || !this.props.azureAppId) &&
-          <ConfigurePlaceholder configureStartCallback={this.props.configureStartCallback} />
+          <ConfigurePlaceholder/>
         }
         {
           this.state.error && !this.state.loadingData &&
