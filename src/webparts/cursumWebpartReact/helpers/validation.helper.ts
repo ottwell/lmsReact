@@ -1,3 +1,5 @@
+import * as strings from 'CursumWebpartReactWebPartStrings';
+
 export namespace ValidationHelper {
     const patterns = [
         /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i,
@@ -7,9 +9,9 @@ export namespace ValidationHelper {
     export function validateWRegExp(value: string): string {
         if (value === null ||
             value.trim().length === 0) {
-            return 'error';
+            return strings.SystemMessages.invalidParam;
         }
-        let res = 'error';
+        let res = strings.SystemMessages.invalidParam;
         patterns.forEach(pattern => {
             if(pattern.test(value)){
                 res = '';
@@ -21,16 +23,14 @@ export namespace ValidationHelper {
     export function validateNumberRange(value: string): string {
         if (value === null ||
             value.trim().length === 0) {
-            return '';
+            return strings.SystemMessages.invalidParam;
         }
         if(!parseInt(value)) {
-            return 'error';
+            return strings.SystemMessages.invalidParam;
         }
-        if(parseInt(value) > 5) {
-            return 'error';
+        if(parseInt(value) < 0) {
+            return strings.SystemMessages.invalidParam;
         }
-        if(parseInt(value) < 6) {
-            return '';
-        }
+        return '';
     }
 }

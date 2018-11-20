@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './ConfigPlaceholder.css';
+import * as strings from 'CursumWebpartReactWebPartStrings';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { IConfigurePlaceholderProps } from './IConfigPlaceholderProps';
 import { IConfigurePlaceholderState } from './IConfigPlaceholderState';
@@ -16,9 +17,9 @@ export class ConfigurePlaceholder extends React.Component<IConfigurePlaceholderP
         return (
             <Placeholder
                 iconName='Edit'
-                iconText='Configure your web part'
-                description='Please configure the web part.'
-                buttonLabel='Configure'
+                iconText={strings.configureTitle}
+                description={strings.configureDesc}
+                buttonLabel={strings.configureButton}
                 onConfigure={ this._configureWebPart } />
         );
     }

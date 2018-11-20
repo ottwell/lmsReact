@@ -1,7 +1,7 @@
-import { ICourseProps } from '../../components/Course/ICourseProps';
+import { ICourseConfig } from '../../Models/ICourseConfig.model';
 
 export interface ICursumWebpartReactState {
-    apiData: Array<ICourseProps>;
+    apiData: Array<ICourseConfig>;
     error: boolean;
     errorData: any;
     loadingData: boolean;

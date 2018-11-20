@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './ErrorPlaceholder.css';
+import * as strings from 'CursumWebpartReactWebPartStrings';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import { IErrorPlaceholderProps } from './IErrorPlaceholderProps';
 import { IErrorPlaceholderState } from './IErrorPlaceholderState';
@@ -11,9 +12,10 @@ export class ErrorPlaceholder extends React.Component<IErrorPlaceholderProps, IE
 
 
     public render(): React.ReactElement<IErrorPlaceholderProps> {
-        let errorMessage = this.props.errorData.message ? this.props.errorData.message : undefined;
-        if (!errorMessage) errorMessage = this.props.errorData.Message;
-        if (!errorMessage) errorMessage = 'Unknown Error';
+        let errorMessage = strings.SystemMessages.unknownDataError;
+        if(this.props.errorData) {
+            errorMessage = this.props.errorData.message ? this.props.errorData.message : this.props.errorData;
+        }
         return (
             <MessageBar
                 messageBarType={MessageBarType.blocked}

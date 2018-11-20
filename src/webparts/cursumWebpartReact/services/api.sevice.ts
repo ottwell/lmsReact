@@ -19,7 +19,10 @@ export class LmsApiService {
             if (!this.lmsClient) this.getLmsClient(context, appId);
             this.urlCache = url;
             this.getLmsDataCache$ = this.lmsClient.get(url, AadHttpClient.configurations.v1).then((res: HttpClientResponse) => {
-                return res.json();
+                if(res.status === 200) {
+                    return res.json();
+                }
+                return Promise.reject(res.statusText);
             }).then((dataArray: T[]) => {
                 if (Array.isArray(dataArray)) {
                     return dataArray.map((item) => {

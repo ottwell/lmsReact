@@ -5,6 +5,7 @@ export interface ICursumWebpartReactProps {
   context: WebPartContext;
   azureAppId: string;
   apiUrl: string;
+  authRedirectEndPoint: string;
   resultCount: string;
   dataProvider: LmsApiService;
   configureStartCallback: () => void;

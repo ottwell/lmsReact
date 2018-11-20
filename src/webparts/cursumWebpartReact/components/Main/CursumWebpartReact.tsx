@@ -3,10 +3,10 @@ import styles from './CursumWebpartReact.module.scss';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { ICursumWebpartReactProps } from './ICursumWebpartReactProps';
 import { ICursumWebpartReactState } from './ICursumWebpartReactState';
-import { ICourseProps } from '../Course/ICourseProps';
 import { ConfigurePlaceholder } from '../ConfigPlaceholder/ConfigPlaceholder';
 import { ErrorPlaceholder } from '../ErrorPlaceholder/ErrorPlaceholder';
 import { Course } from '../Course/Course';
+import { ICourseConfig } from '../../Models/ICourseConfig.model';
 
 
 
@@ -46,7 +46,7 @@ export class CursumWebpartReact extends React.Component<ICursumWebpartReactProps
           <ConfigurePlaceholder configureStartCallback={this.props.configureStartCallback} />
         }
         {
-          this.state.error &&
+          this.state.error && !this.state.loadingData &&
           <ErrorPlaceholder errorData={this.state.errorData} />
         }
         {
@@ -54,9 +54,8 @@ export class CursumWebpartReact extends React.Component<ICursumWebpartReactProps
           <div className="container">
             <div className="course-catalog-container-items-inner course-catalog-container-list-inner row">
               {
-                this.state.apiData.slice(0, parseInt(this.props.resultCount) ? parseInt(this.props.resultCount) : 5).map((courseData: ICourseProps) => {
-                  <Course {...courseData} dataProvider={this.props.dataProvider} />;
-
+                this.state.apiData.slice(0, parseInt(this.props.resultCount)).map((courseData: ICourseConfig) => {
+                  return <Course authRedirectEndPoint={this.props.authRedirectEndPoint} apiUrl={this.props.apiUrl} courseConfig={courseData} dataProvider={this.props.dataProvider} />;
                 })
               }
             </div>
@@ -78,19 +77,19 @@ export class CursumWebpartReact extends React.Component<ICursumWebpartReactProps
 
 
   private _loadAsyncData(url: string, appId: string): void {
-    // this.props.dataProvider.getLmsData<ICourseProps>(this.props.context, url, appId).then((data) => {
-    //   this.setState({
-    //     apiData: data,
-    //     error: false,
-    //     loadingData: false
-    //   });
-    // }, ((error: any) => {
-    //   this.setState({
-    //     error: true,
-    //     errorData: error,
-    //     loadingData: false
-    //   });
-    // }));
+    this.props.dataProvider.getLmsData<ICourseConfig>(this.props.context, url, appId).then((data: ICourseConfig[]) => {
+      this.setState({
+        apiData: data,
+        error: false,
+        loadingData: false
+      });
+    }, ((error: any) => {
+      this.setState({
+        error: true,
+        errorData: error,
+        loadingData: false
+      });
+    }));
   }
 
 }

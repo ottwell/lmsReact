@@ -3,7 +3,17 @@
   "solution": {
     "name": "lms-react-client-side-solution",
     "id": "7c7cd184-ee0b-4b9b-8ace-378cf583f8ce",
-    "version": "1.0.0.0",
+    "version": "1.0.0.1",
+    "webApiPermissionRequests": [
+      {
+        "resource": "Proactive-LMS-Dev-App",
+        "scope": "user_impersonation"
+      },
+      {
+        "resource": "Windows Azure Active Directory",
+        "scope": "User.Read"
+      }
+    ],
     "includeClientSideAssets": true,
     "features": [{
       "title": "asset-deployment-webpart-client-side-solution",

@@ -17,6 +17,8 @@ export interface ICursumWebpartReactWebPartProps {
   azureAppId: string;
   apiUrl: string;
   resultCount: string;
+  cssExternalUrl: string;
+  authRedirectEndPoint: string;
 }
 
 export default class CursumWebpartReactWebPart extends BaseClientSideWebPart<ICursumWebpartReactWebPartProps> {
@@ -25,7 +27,7 @@ export default class CursumWebpartReactWebPart extends BaseClientSideWebPart<ICu
   protected onInit(): Promise<void> {
     this._dataProvider = new LmsApiService();
     this._openPropertyPane = this._openPropertyPane.bind(this);
-    SPComponentLoader.loadCss('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
+    SPComponentLoader.loadCss(this.properties.cssExternalUrl);
     return super.onInit();
   }
 
@@ -40,7 +42,8 @@ export default class CursumWebpartReactWebPart extends BaseClientSideWebPart<ICu
         azureAppId: this.properties.azureAppId,
         resultCount: this.properties.resultCount,
         dataProvider: this._dataProvider,
-        configureStartCallback: this._openPropertyPane
+        configureStartCallback: this._openPropertyPane,
+        authRedirectEndPoint: this.properties.authRedirectEndPoint
       }
     );
 
